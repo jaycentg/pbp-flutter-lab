@@ -70,10 +70,11 @@ untuk menyetel tulisan "GANJIL" menjadi warna biru. Sebaliknya, jika *counter* b
 ditambahkan parameter `style` pada *widget* `Text` dengan nilai `TextStyle(color: Colors.red)`untuk menyetel 
 tulisan "GENAP" menjadi warna merah.
 8. [BONUS] Melakukan modifikasi `children` dari `Row` pada `floatingActionButton` untuk menghilangkan tombol
-jika *counter* bernilai 0. Hal ini diimplementasikan dengan menambahkan potongan kode `if (_counter != 0)`
-sebelum `FloatingActionButton`. Artinya, `FloatingActionButton` akan *visible* jika `_counter != 0`.
-9. [BONUS] Agar tombol dapat muncul pertama kali ketika aplikasi di-*run*, *initial value* untuk *counter*
-akan diatur menjadi bernilai 1.
+*decrement counter* jika *counter* bernilai 0. Hal ini diimplementasikan dengan menambahkan potongan kode 
+`if (_counter != 0)` sebelum `FloatingActionButton` untuk *decrement counter*. Artinya, `FloatingActionButton`
+untuk *decrement counter* akan hilang dari layar jika *counter* bernilai 0.
+9. [BONUS] Menambahkan parameter `textDirection` dengan nilai `TextDirection.rtl` untuk *reverse* 
+urutan tampilan tombol, agar ketika tombol *decrement* hilang, tombol *increment* tidak berubah tempat.
 10. Melakukan `add`, `commit`, dan `push` ke GitHub.
 
 ### Referensi

@@ -48,9 +48,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  // initial value of counter is set to non-zero value
-  // so that the buttons appear when rendered on the first time
-  int _counter = 1;
+  int _counter = 0;
 
   void _incrementCounter() {
     setState(() {
@@ -120,17 +118,18 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: Container(
         padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 20.0),
         child: Row(
+          textDirection: TextDirection.rtl,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            FloatingActionButton(
+              onPressed: _incrementCounter,
+              tooltip: 'Increment',
+              child: const Icon(Icons.add),
+            ),
             if (_counter != 0) FloatingActionButton(
               onPressed: _decrementCounter,
               tooltip: 'Decrement',
               child: const Icon(Icons.remove),
-            ),
-            if (_counter != 0) FloatingActionButton(
-              onPressed: _incrementCounter,
-              tooltip: 'Increment',
-              child: const Icon(Icons.add),
             ),
           ],
         ),
