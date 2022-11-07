@@ -36,7 +36,9 @@ untuk *wrapping* *widget* lain yang diimplementasikan dengan `Material Design` p
 ### setState()
 `setState()` berfungsi untuk menginformasikan *widget* bahwa terdapat perubahan pada *state* aplikasi sehingga
 *widget* akan dimuat ulang berdasarkan *state* yang baru. Fungsi ini hanya dapat digunakan pada *stateful
-widget*.
+widget*. Secara umum, variabel yang akan terdampak akibat fungsi ini adalah variabel yang ingin diubah 
+nilainya agar *state*-nya berbeda. Pada aplikasi ini, variabel yang terdampak akibat fungsi ini adalah 
+`_counter`, karena kita akan menaikkan dan menurunkan *counter* tersebut.
 
 ### Const dan Final
 *Keyword* `final` berfungsi untuk menandai bahwa nilai dari suatu variabel tidak akan pernah berubah selama
