@@ -77,10 +77,10 @@ akan diatur menjadi bernilai 1.
 10. Melakukan `add`, `commit`, dan `push` ke GitHub.
 
 ### Referensi
-https://www.geeksforgeeks.org/flutter-stateful-vs-stateless-widgets/
-https://belajarflutter.com/perbedaan-stateful-dan-stateless-widget-di-flutter/
-https://medium.com/flutter-developer-indonesia/belajar-widget-widget-pada-flutter-flutter-starter-pack-part-1-7f386a02fbb6
-https://belajarflutter.com/struktur-widget-pada-aplikasi-flutter/
-https://docs.flutter.dev/development/ui/widgets
-https://www.depotkode.com/perbedaan-stateless-dan-stateful-pada-flutter/
-https://belajarflutter.com/perbedaan-final-dan-const-pada-dart-dan-flutter/
+https://www.geeksforgeeks.org/flutter-stateful-vs-stateless-widgets/<br>
+https://belajarflutter.com/perbedaan-stateful-dan-stateless-widget-di-flutter/<br>
+https://medium.com/flutter-developer-indonesia/belajar-widget-widget-pada-flutter-flutter-starter-pack-part-1-7f386a02fbb6<br>
+https://belajarflutter.com/struktur-widget-pada-aplikasi-flutter/<br>
+https://docs.flutter.dev/development/ui/widgets<br>
+https://www.depotkode.com/perbedaan-stateless-dan-stateful-pada-flutter/<br>
+https://belajarflutter.com/perbedaan-final-dan-const-pada-dart-dan-flutter/<br>
