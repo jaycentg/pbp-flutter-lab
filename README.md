@@ -85,3 +85,89 @@ https://belajarflutter.com/struktur-widget-pada-aplikasi-flutter/<br>
 https://docs.flutter.dev/development/ui/widgets<br>
 https://www.depotkode.com/perbedaan-stateless-dan-stateful-pada-flutter/<br>
 https://belajarflutter.com/perbedaan-final-dan-const-pada-dart-dan-flutter/<br>
+
+# Penjelasan Tugas 8 PBP
+
+## Identitas
+Nama    : Jaycent Gunawan Ongris<br>
+NPM     : 2106750231<br>
+Kelas   : F
+
+## Jawaban dari Pertanyaan
+### Perbedaan `Navigator.push` dan `Navigator.pushReplacement`
+Pada `Navigator.push`, halaman baru yang ingin ditampilkan kepada pengguna di-*push* secara biasa ke dalam *stack*
+tanpa mengganti posisi halaman sebelumnya pada *stack*, sehingga ketika pengguna memanggil `Navigator.pop`, *top of stack*
+akan di-*pop* dan halaman dapat berpindah ke halaman sebelumnya. Sementara itu, pada `Navigator.pushReplacement`, halaman
+baru yang ingin ditampilkan kepada pengguna di-*push* ke *stack* dengan me-*replace* posisi halaman sebelumnya. Dengan demikian,
+halaman tidak dapat berpindah ke halaman sebelumnya.
+
+### Widget yang Digunakan
+Pada proyek ini, berikut *widget* yang saya gunakan dan fungsinya:
+1. `Scaffold`: *widget* utama yang menjadi struktur *layout* halaman aplikasi dan sebagai
+   wadah untuk menampung semua *widget* lainnya pada halaman aplikasi
+2. `AppBar`: *widget* yang berfungsi untuk menampilkan *app bar* sebuah halaman aplikasi, umumnya
+   diletakkan pada bagian paling atas dari sebuah halaman aplikasi dan dapat berisi *widget* lain
+3. `Text`: *widget* yang berfungsi untuk menampilkan teks pada halaman aplikasi
+4. `Center`: *widget* yang berfungsi untuk menampilkan *child widget*-nya menjadi di tengah
+5. `Column`: *widget* yang berfungsi untuk menampilkan *children widget*-nya secara vertikal
+6. `Row`: *widget* yang berfungsi untuk menampilkan *children widget*-nya secara horizontal
+7. `MaterialApp`: *widget* yang dijalankan pertama kali ketika eksekusi fungsi `main()` dan berfungsi
+   untuk *wrapping* *widget* lain yang diimplementasikan dengan `Material Design` pada halaman aplikasi
+8. `Expanded`: *widget* yang digunakan untuk memperluas *children widget* dari `Row`, `Column`, atau `Flex` sedemikian
+    sehingga *child* tersebut mengisi tempat kosong yang tersedia
+9. `Form`: *widget* yang bermanfaat dalam membungkus beberapa *form field widget* agar menjadi satu kesatuan
+10. `TextFormField`: *widget* `TextField` yang terintegrasi dengan `Form`, berfungsi untuk menyediakan *field*
+     bagi pengguna untuk memasukkan teks
+11. `SizedBox`: *widget* berupa *box* yang bisa ditentukan ukurannya dan biasa digunakan untuk memberi jarak
+     antara satu *widget* dengan *widget* lain
+12. `DropdownButton`: *widget* tombol yang ketika ditekan oleh pengguna akan menampilkan *dropdown* yang dapat dipilih
+13. `Align`: *widget* untuk mengatur posisi *widget* yang menjadi *child*-nya
+14. `Padding`: *widget* untuk memberikan *padding* pada *widget* yang menjadi *child*-nya
+15. `ListTile`: *widget* yang bersifat *single fixed-height row* yang umumnya digunakan sebagai *children* dari `ListView` atau
+*column* untuk `Drawer`
+16. `ListView`: *widget* *scrollable* untuk menampilkan *widget-widget* lain yang menjadi *children*-nya
+17. `Dialog`: *widget* untuk menampilkan *pop up window* pada halaman aplikasi
+
+### Jenis-Jenis Event yang Ada pada Flutter
+Berikut adalah jenis-jenis *event* yang ada pada Flutter:
+1. onEnter
+2. onExit
+3. onHover
+4. onFocusChange
+5. onTap
+6. onPressed
+7. onSaved
+8. onChanged
+
+### Cara Kerja Navigator Mengganti Halaman pada Flutter
+Implementasi navigasi halaman pada Flutter memanfaatkan struktur data *stack*. *Stack* memiliki dua operasi utama,
+yaitu *push* dan *pop*. Hal ini sama dengan konsep yang diterapkan pada Flutter. Halaman yang ditampilkan kepada pengguna
+pada satu waktu berada pada *top of stack*. Ketika pengguna ingin berpindah ke halaman baru, dapat diterapkan
+operasi *push* agar ditambahkan halaman baru pada *top of stack*. Halaman inilah yang kemudian ditampilkan kepada pengguna.
+Jika pengguna ingin berpindah ke halaman sebelumnya, dapat diterapkan operasi *pop* agar halaman yang pada saat itu
+berada di *top of stack* dapat dikeluarkan, sehingga halaman yang menjadi *top of stack* selanjutnya adalah halaman sebelum
+halaman tersebut. Dengan demikian, pengguna dapat berpindah pada halaman sebelumnya dengan operasi ini.
+
+### Tahap-Tahap Implementasi Checklist
+Tahapan yang saya lakukan dalam mengimplementasikan checklist:
+1. [BONUS] Membuat file `drawer.dart` yang berisi widget `Drawer` yang akan digunakan pada aplikasi. Drawer ini memiliki child
+berupa tiga buah `ListTile` yang ketika diklik dapat memindahkan halaman saat ini ke halaman lain. Widget Drawer ini
+diimplementasikan menggunakan *stateless widget*.
+2. Membuat file `form.dart` yang berisi implementasi halaman form. Pada halaman ini, dibuat suatu *stateless widget* berupa
+*card* budget yang akan ditampilkan pada halaman `Data Budget`. Implementasi *card* ini menggunakan `Container` yang
+sudah dimodifikasi untuk menampilkan data budget sebagaimana yang telah di-*pass* pada parameter class widget ini.
+3. Selanjutnya, dibuat suatu *stateful widget* untuk menyediakan form yang akan diisi oleh pengguna terkait detail
+budget. Untuk implementasi form ini, widget `Form` digunakan untuk *wrap* tiga field yang diperlukan bagi pengguna
+untuk menginput data, yaitu 'Judul', 'Nominal', dan 'Jenis'. Sementara itu, tombol `Simpan` diimplementasikan di luar
+widget `Form` agar posisinya bisa diatur menjadi di bawah page dengan memanfaatkan widget `Expanded` dan `Align`, di mana
+alignment akan diatur menjadi `bottomCenter`. Widget yang digunakan untuk memasukkan data 'Judul' dan 'Nominal' adalah 
+`TextFormField`, sedangkan widget yang digunakan untuk memilih jenis budget adalah `DropdownButton`. Selanjutnya, untuk
+tiap event yang terjadi pada widget tersebut, diterapkan `setState()` untuk meng-*assign* nilai yang dimasukkan pengguna
+pada field ke variabel yang telah diinisialisasi.
+4. Untuk implementasi tombol `Simpan`, menggunakan `TextButton`, di mana ketika tombol tersebut ditekan, akan dilakukan
+validasi input pengguna pada field yang bersesuaian. Jika sudah divalidasi, input dari pengguna akan dijadikan sebagai parameter
+widget `BudgetCard` seperti yang diimplementasikan pada langkah (2), untuk kemudian dimasukkan ke suatu list. Selanjutnya,
+untuk memberitahu pengguna bahwa datanya sudah masuk, ditampilkan widget `Dialog` yang berisi teks 'Data telah dimasukkan'.
+5. Membuat file `data.dart` untuk menampilkan `BudgetCard` yang sudah dimasukkan ke list seperti yang telah dijelaskan pada
+langkah (4). Implementasi untuk menampilkan kumpulan `BudgetCard` ini memanfaatkan widget `ListView`.
+6. Melakukan `add`, `commit`, dan `push` ke GitHub.
