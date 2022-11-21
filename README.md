@@ -171,3 +171,48 @@ untuk memberitahu pengguna bahwa datanya sudah masuk, ditampilkan widget `Dialog
 5. Membuat file `data.dart` untuk menampilkan `BudgetCard` yang sudah dimasukkan ke list seperti yang telah dijelaskan pada
 langkah (4). Implementasi untuk menampilkan kumpulan `BudgetCard` ini memanfaatkan widget `ListView`.
 6. Melakukan `add`, `commit`, dan `push` ke GitHub.
+
+# Penjelasan Tugas 9 PBP
+
+## Identitas
+Nama    : Jaycent Gunawan Ongris<br>
+NPM     : 2106750231<br>
+Kelas   : F
+
+## Jawaban dari Pertanyaan
+### Pengambilan Data JSON tanpa Model
+[jawab]
+
+### Widget yang Digunakan
+Pada proyek ini, berikut *widget* yang saya gunakan dan fungsinya:
+1. `Scaffold`: *widget* utama yang menjadi struktur *layout* halaman aplikasi dan sebagai
+   wadah untuk menampung semua *widget* lainnya pada halaman aplikasi
+2. `AppBar`: *widget* yang berfungsi untuk menampilkan *app bar* sebuah halaman aplikasi, umumnya
+   diletakkan pada bagian paling atas dari sebuah halaman aplikasi dan dapat berisi *widget* lain
+3. `Text`: *widget* yang berfungsi untuk menampilkan teks pada halaman aplikasi
+4. `Center`: *widget* yang berfungsi untuk menampilkan *child widget*-nya menjadi di tengah
+5. `Column`: *widget* yang berfungsi untuk menampilkan *children widget*-nya secara vertikal
+6. `Row`: *widget* yang berfungsi untuk menampilkan *children widget*-nya secara horizontal
+7. `MaterialApp`: *widget* yang dijalankan pertama kali ketika eksekusi fungsi `main()` dan berfungsi
+   untuk *wrapping* *widget* lain yang diimplementasikan dengan `Material Design` pada halaman aplikasi
+8. `Expanded`: *widget* yang digunakan untuk memperluas *children widget* dari `Row`, `Column`, atau `Flex` sedemikian
+   sehingga *child* tersebut mengisi tempat kosong yang tersedia
+9. `Form`: *widget* yang bermanfaat dalam membungkus beberapa *form field widget* agar menjadi satu kesatuan
+10. `TextFormField`: *widget* `TextField` yang terintegrasi dengan `Form`, berfungsi untuk menyediakan *field*
+    bagi pengguna untuk memasukkan teks
+11. `SizedBox`: *widget* berupa *box* yang bisa ditentukan ukurannya dan biasa digunakan untuk memberi jarak
+    antara satu *widget* dengan *widget* lain
+12. `DropdownButton`: *widget* tombol yang ketika ditekan oleh pengguna akan menampilkan *dropdown* yang dapat dipilih
+13. `Align`: *widget* untuk mengatur posisi *widget* yang menjadi *child*-nya
+14. `Padding`: *widget* untuk memberikan *padding* pada *widget* yang menjadi *child*-nya
+15. `ListTile`: *widget* yang bersifat *single fixed-height row* yang umumnya digunakan sebagai *children* dari `ListView` atau
+    *column* untuk `Drawer`
+16. `ListView`: *widget* *scrollable* untuk menampilkan *widget-widget* lain yang menjadi *children*-nya
+17. `Dialog`: *widget* untuk menampilkan *pop up window* pada halaman aplikasi
+
+### Mekanisme Pengambilan Data hingga Ditampilkan
+[jawab]
+
+### Tahap-Tahap Implementasi Checklist
+Tahapan yang saya lakukan dalam mengimplementasikan checklist:
+1. 
