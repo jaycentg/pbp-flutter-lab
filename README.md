@@ -181,7 +181,10 @@ Kelas   : F
 
 ## Jawaban dari Pertanyaan
 ### Pengambilan Data JSON tanpa Model
-[jawab]
+Tentu saja kita dapat melakukan pengambilan data JSON tanpa menggunakan model. Akan tetapi, hal ini bukan
+*best practice*. Adanya model dapat membuat pengambilan data JSON menjadi lebih terstruktur, dalam hal ini
+tiap *field* dari data menjadi properti dari class model tersebut yang sudah ditentukan tipe datanya, sehingga
+ketika kita ingin mengakses data untuk *field* tersebut, kita cukup mengakses properti dari class model tersebut.
 
 ### Widget yang Digunakan
 Pada proyek ini, berikut *widget* yang saya gunakan dan fungsinya:
@@ -196,23 +199,67 @@ Pada proyek ini, berikut *widget* yang saya gunakan dan fungsinya:
 7. `MaterialApp`: *widget* yang dijalankan pertama kali ketika eksekusi fungsi `main()` dan berfungsi
    untuk *wrapping* *widget* lain yang diimplementasikan dengan `Material Design` pada halaman aplikasi
 8. `Expanded`: *widget* yang digunakan untuk memperluas *children widget* dari `Row`, `Column`, atau `Flex` sedemikian
-   sehingga *child* tersebut mengisi tempat kosong yang tersedia
-9. `Form`: *widget* yang bermanfaat dalam membungkus beberapa *form field widget* agar menjadi satu kesatuan
-10. `TextFormField`: *widget* `TextField` yang terintegrasi dengan `Form`, berfungsi untuk menyediakan *field*
-    bagi pengguna untuk memasukkan teks
-11. `SizedBox`: *widget* berupa *box* yang bisa ditentukan ukurannya dan biasa digunakan untuk memberi jarak
-    antara satu *widget* dengan *widget* lain
-12. `DropdownButton`: *widget* tombol yang ketika ditekan oleh pengguna akan menampilkan *dropdown* yang dapat dipilih
-13. `Align`: *widget* untuk mengatur posisi *widget* yang menjadi *child*-nya
-14. `Padding`: *widget* untuk memberikan *padding* pada *widget* yang menjadi *child*-nya
-15. `ListTile`: *widget* yang bersifat *single fixed-height row* yang umumnya digunakan sebagai *children* dari `ListView` atau
+   sehingga *child* tersebut mengisi tempat kosong yang tersedia9
+9. `Padding`: *widget* untuk memberikan *padding* pada *widget* yang menjadi *child*-nya
+10. `ListTile`: *widget* yang bersifat *single fixed-height row* yang umumnya digunakan sebagai *children* dari `ListView` atau
     *column* untuk `Drawer`
-16. `ListView`: *widget* *scrollable* untuk menampilkan *widget-widget* lain yang menjadi *children*-nya
-17. `Dialog`: *widget* untuk menampilkan *pop up window* pada halaman aplikasi
+11. `ListView`: *widget* *scrollable* untuk menampilkan *widget-widget* lain yang menjadi *children*-nya
+12. `FutureBuilder`: *widget* yang terbentuk berdasarkan *snapshot* terbaru dari `Future`.
+13. `Card`: *widget* untuk menampilkan informasi tertentu, ditandai dengan adanya *rounded corner* dan *shadow* pada representasi visualnya.
+14. `Checkbox`: *widget* untuk menampilkan *input field* berupa *checkbox*.
+15. `Container`: *widget* yang digunakan untuk mendekorasi *widget* lain yang menjadi *child*-nya.
+16. `Flexible`: *widget* yang mengatur flex dari child `Row`, `Column`, atau `Flex`.
 
 ### Mekanisme Pengambilan Data hingga Ditampilkan
-[jawab]
+Berikut adalah mekanisme pengambilan data hingga ditampillkan:
+1. Membuat fungsi `Future` yang akan dipanggil saat menampilkan data dengan `FutureBuilder`.
+2. Melakukan *parse* URL yang akan digunakan untuk pengambilan data.
+3. Melakukan pengambilan data dengan menggunakan method `get` dari package `http` yang sudah diinstal berdasarkan
+URL yang sudah di-*parse* tersebut.
+4. Melakukan *decode* terhadap JSON yang sudah diambil agar bisa diakses nilainya secara langsung.
+5. Memasukkan data JSON hasil *decode* ke *model class* yang telah dibuat untuk kemudian dimasukkan ke list dengan melakukan
+loop di tiap data JSON tersebut.
+6. Mengatur list yang berisi *instance* dari *model* tersebut sebagai *return value* dari fungsi `Future`.
+7. Menginstansiasi `FutureBuilder` yang menerima parameter `future` berupa fungsi `Future` tersebut dan parameter
+`builder` berupa *anonymous function* yang akan mengembalikan *widget* yang akan ditampilkan berdasarkan hasil
+kembalian fungsi pada parameter `future` yang juga menjadi parameter `snapshot` pada *anonymous function* tersebut.
+8. Mengatur *anonymous function* pada `builder` untuk mengembalikan *widget* yang untuk menampilkan data pada *snapshot*.
+9. *Widget* tersebut akan ditampilkan dan berisi data sebagaimana yang didapatkan dari URL yang sudah ditentukan.
 
 ### Tahap-Tahap Implementasi Checklist
 Tahapan yang saya lakukan dalam mengimplementasikan checklist:
-1. 
+1. [BONUS] Melakukan *refactor* terhadap file-file Dart sebelumnya dengan memindahkan ke direktori yang sesuai.
+2. Membuat model class berdasarkan URL Tugas 3 menggunakan `QuickType`. Model tersebut kemudian dimasukkan ke
+file `watchlist.dart` dan disimpan pada direktori `model`.
+3. Menambahkan `http` package dan mengatur *internet permission* pada proyek.
+4. Menambahkan `ListTile` baru pada `drawer.dart` sebagai navigasi ke page `My Watch List`.
+5. [BONUS] Membuat file `fetch.dart` yang berisi fungsi untuk melakukan fetch data sebagaimana dijelaskan pada
+bagian sebelumnya (Mekanisme Pengambilan Data hingga Ditampilkan) pada poin 1 sampai 6.
+6. Membuat file `mywatchlist.dart` yang terhubung dengan `Navigator` pada `Drawer` untuk menampilkan page `My Watch List`.
+7. Membuat `stateful widget` yang mengembalikan `Scaffold` sebagai struktur utama page. Pada `Scaffold` tersebut, terdapat
+parameter `appBar` yang berisi judul page, parameter `drawer` yang berisi menu drawer sebagaimana pada file `drawer.dart`, dan
+parameter `body` yang berisi `FutureBuilder`.
+8. `FutureBuilder` berisi parameter `future` yang merupakan fungsi `Future` yang telah dibuat sebelumnya pada poin 4 dan parameter
+`builder` yang berupa *anonymous function* yang akan mengembalikan *widget* yang akan ditampilkan berdasarkan hasil
+kembalian fungsi pada parameter `future` yang juga menjadi parameter `snapshot` pada *anonymous function* tersebut.
+9. Pada *anonymous function* tersebut, akan dibuat conditionals, jika data snapshot masih null, berarti akan ditampilkan
+`CircularProgressIndicator()`. Jika data snapshot tidak null tetapi kosong (tidak ada data), maka akan ditampilkan
+widget untuk menunjukkan bahwa tidak ada data. Jika data snapshot tidak null dan tidak kosong (datanya ada), maka akan
+ditampilkan data tersebut dalam bentuk `ListView` menggunakan `builder`. 
+10. Pada `ListView.builder` akan diatur `itemCount` sebagai jumlah data yang dikembalikan dan `itemBuilder` untuk membentuk
+konten dari `ListView` tersebut.
+11. `ListView` akan terdiri dari widget `Card` yang berisi judul film dan menambahkan child `InkWell` agar `Card` tersebut
+dapat ditekan. Selanjutnya, ketika `Card` terus ditekan page akan berpindah ke page yang berisi detail dari film yang ditekan.
+12. [BONUS] Pada `Card` tersebut, juga dilakukan kustomisasi border menjadi warna merah jika belum ditonton dan hijau jika sudah ditonton. 
+13. [BONUS] Selain itu, ditambahkan pula `Checkbox` untuk mengubah status apakah suatu film sudah ditonton atau tidak secara lokal.
+14. [BONUS] Untuk mengimplementasikan poin 12, dibuat suatu list yang berisi bool apakah suatu film sudah ditonton atau tidak. Selanjutnya,
+perubahan status yang dilakukan pada `Checkbox` hanya diterapkan pada list itu saja.
+15. Membuat file `watchlist_detail.dart` yang berisi widget untuk menampilkan detail dari film yang ditekan.
+16. Membuat `stateless widget` yang menerima parameter `watchListFields` yang berisi data fields dari JSON yang didapatkan dan
+parameter `status` yang merupakan status apakah suatu film sudah ditonton atau tidak (dari list yang dibuat pada tahap 13).
+17. Pada widget tersebut, akan ditampilkan data yang sudah di-*pass* pada parameternya dalam bentuk `Column`.
+18. Selanjutnya, dibuat fungsi untuk mengonversi format tanggal agar dapat ditampilkan dengan rapi.
+19. Pada tiap children dari `Column`, akan ditampilkan data terkait film yang bersangkutan dengan menggunakan `Text.rich` dan `TextSpan`
+untuk membuat *header* dari tiap field menjadi *bold*.
+20. Selanjutnya, ditambahkan `ElevatedButton` di akhir page untuk kembali ke halaman `My Watch List` sebelumnya.
+21. Melakukan `add`, `commit`, dan `push` ke GitHub.
